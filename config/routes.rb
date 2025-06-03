@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   get "users/index"
   resource :session
   resources :passwords, param: :token
