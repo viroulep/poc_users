@@ -1,2 +1,11 @@
 <h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<p>
+Just some default home page for now.
+</p>
+
+<h2>List of users (<%= @users.size %>)</h2>
+<ul>
+  <% @users.each do |u| %>
+    <li><%= u.email_address %></li>
+  <% end %>
+</ul>
