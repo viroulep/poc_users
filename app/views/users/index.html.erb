@@ -6,6 +6,24 @@ Just some default home page for now.
 <h2>List of users (<%= @users.size %>)</h2>
 <ul>
   <% @users.each do |u| %>
-    <li><%= u.email_address %></li>
+    <li><%= u.email_address %> (identities: <%= u.identities.pluck(:provider, :uid) %>)</li>
   <% end %>
 </ul>
+
+<% unless Current.user.identities.pluck(:provider).include?("google_oauth2") %>
+  <%= form_tag "/auth/google_oauth2", method: :post, data: { turbo: false } do %>
+    <button type="submit">
+      Login with Google
+    </button>
+  <% end %>
+<% end %>
+
+<% unless Current.user.identities.pluck(:provider).include?("github") %>
+  <%= form_tag "/auth/github", method: :post, data: { turbo: false } do %>
+    <button type="submit">
+      Login with Github
+    </button>
+  <% end %>
+<% end %>
+
+<%= link_to "Forgot password?", new_password_path %>
