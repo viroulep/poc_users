@@ -26,6 +26,9 @@
     <nav>
       <%= link_to "Home", root_path %>
       <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+      <div>
+        Current user: <%= Current.user&.email_address || "none" %>, session: <%= Current.session&.source %>
+      </div>
     </nav>
     <main>
       <%= yield %>

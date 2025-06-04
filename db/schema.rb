@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_03_202436) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_04_104842) do
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer "resource_owner_id", null: false
     t.integer "application_id", null: false
@@ -59,6 +59,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_03_202436) do
     t.string "user_agent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "source"
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
