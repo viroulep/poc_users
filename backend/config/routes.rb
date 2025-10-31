@@ -15,6 +15,11 @@ Rails.application.routes.draw do
 
   get "/auth/:provider/callback" => "omni_auths#create", as: :omniauth_callback
   get "/auth/failure" => "omni_auths#failure", as: :omniauth_failure
+
+  defaults format: :json do
+    get "/jwtlogin" => "sessions#get_user_from_jwt"
+  end
+
   # Defines the root path route ("/")
   root "users#index"
 end
